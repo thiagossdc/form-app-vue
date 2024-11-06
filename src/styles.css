@@ -1,0 +1,99 @@
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+header {
+  background: #1abc9c;
+  padding: 10px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-icon {
+  cursor: pointer;
+  font-size: 24px;
+  color: white;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  display: inline;
+  margin-right: 20px;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+}
+
+#form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 10px;
+
+  fieldset {
+    border: none;
+    font-weight: normal;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    box-sizing: border-box;
+    outline: none;
+    display: block;
+    color: #333333;
+    width: 100%;
+    padding: 7px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+    font-family: inherit;
+    font-size: 18px;
+    height: 45px;
+
+    &.has-error {
+      border-color: #f04242;
+    }
+  }
+
+  textarea {
+    height: 200px;
+  }
+
+  span {
+    display: block;
+    font-size: 14px;
+    color: #f04242;
+    padding-bottom: 10px;
+  }
+
+  button[type="submit"] {
+    display: block;
+    padding: 19px 39px 18px 39px;
+    color: #ffffff;
+    background: #1abc9c;
+    font-size: 18px;
+    width: 100%;
+    border: 1px solid #16a085;
+    border-width: 1px 1px 3px;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    outline: none;
+
+    &:hover {
+      background: #109177;
+    }
+  }
+}

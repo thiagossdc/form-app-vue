@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulário de Contato</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="menu-icon" @click="toggleMenu">☰</div>
+        <ul v-if="menuVisible" class="menu">
+          <li><a href="#form">Formulário</a></li>
+          <!-- Adicione outros itens de menu aqui -->
+        </ul>
+      </nav>
+    </header>
+
+    <div id="form">
+      <form
+        method="POST"
+        action="https://formspree.io/thiagosscarvalho93@gmail.com"
+        v-on:submit.prevent="validateBeforeSubmit"
+        ref="contato"
+      >
+        <fieldset>
+          <input type="hidden" name="_subject" value="Novo contato!" />
+          <input
+            type="hidden"
+            name="_next"
+            value="https://www.carvalho.com/contato/mensagem-enviada/"
+          />
+          <input type="hidden" name="_language" value="pt" />
+
+          <label for="nome">Seu nome:</label>
+          <input
+            type="text"
+            name="nome"
+            id="nome"
+            placeholder="Seu nome"
+            v-validate="'required'"
+            :class="{ 'has-error': errors.has('nome') }"
+          />
+          <span v-if="errors.nome">${ errors.nome }</span>
+
+          <label for="email">Seu e-mail:</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Seu e-mail"
+            v-validate="'required|email'"
+            :class="{ 'has-error': errors.has('email') }"
+          />
+          <span v-if="errors.email">${ errors.email }</span>
+
+          <label for="assunto">Assunto:</label>
+          <select
+            name="assunto"
+            id="assunto"
+            v-validate="'required'"
+            :class="{ 'has-error': errors.has('assunto') }"
+          >
+            <option value="" disabled selected>Escolha um assunto</option>
+            <option value="suporte">Suporte</option>
+            <option value="informacao">Informações</option>
+            <option value="feedback">Feedback</option>
+          </select>
+          <span v-if="errors.assunto">${ errors.assunto }</span>
+
+          <label for="mensagem">Sua mensagem:</label>
+          <textarea
+            name="mensagem"
+            id="mensagem"
+            placeholder="Sua mensagem"
+            v-validate="'required'"
+            :class="{ 'has-error': errors.has('mensagem') }"
+          ></textarea>
+          <span v-if="errors.mensagem">${ errors.mensagem }</span>
+
+          <button type="submit">Enviar</button>
+
+          <div v-if="submissionStatus" class="submission-status">
+            <p>${ submissionStatus }</p>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vee-validate@2"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
